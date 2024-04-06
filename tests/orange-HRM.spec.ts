@@ -5,12 +5,11 @@ import { HomePage } from "../pageObjectModel/HomePage";
 import employeeData from "../data/employee-data.json";
 import { Navigaationpage } from "../pageObjectModel/Navigaationpage";
 
-
 import { TIMEOUT } from "dns";
 
 test.beforeEach(async ({ page }) => {
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    await page.waitForTimeout(5000)
+    //await page.waitForTimeout(5000)
 
 })
 // This is the script for the actual worflow
@@ -22,7 +21,7 @@ test('EmployeeWorkflow', async ({ page }) => {
 
     await loginPage.login("Admin", "admin123")
 
-    for (const data of employeeData.employeeData) {
+    for (const data of employeeData.employeeData) { // This interation will read the Jason data and add employees
 
         await navigaationpage.navigateToPIMPageAndAddEmployee()
         await employeePage.addEmployee(data.firstName, data.lastName)

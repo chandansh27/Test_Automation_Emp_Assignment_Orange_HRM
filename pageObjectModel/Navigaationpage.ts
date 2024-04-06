@@ -4,12 +4,9 @@ export class Navigaationpage {
   constructor(private readonly page: Page) { }
 
   async navigateToPIMPageAndAddEmployee() {
-    //await this.page.click("//span[.='PIM']",{timeout: 5000}) 
+
 
     await this.page.click("//span[contains(@class,'oxd-main-menu-item--name') and (.='PIM')]", { timeout: 5000, })
-
-    //await this.page.locator('oxd-main-menu-item--name').filter({hasText: "PIM"}).first().click()
-
     await this.page.click("//a[text()='Add Employee']", { timeout: 5000 })
 
 
@@ -17,10 +14,9 @@ export class Navigaationpage {
 
   async navigateToEmployeeList() {
     await this.page.click("//span[contains(@class,'oxd-main-menu-item--name') and (.='PIM')]", { timeout: 10000 })
-    //await this.page.click("//a[text()='Employee List']",{timeout: 7000, delay: 5000})
-    await this.page.click("//a[contains(@class,'oxd-topbar-body-nav-tab-item') and text()='Employee List']", { timeout: 7000 })
-
-
+    //await this.page.waitForTimeout(10000)// This time need to wait because application behaving very flacky after 2 iteration
+    await this.page.click("//a[contains(@class,'oxd-topbar-body-nav-tab-item') and text()='Employee List']")
+    
 
   }
 

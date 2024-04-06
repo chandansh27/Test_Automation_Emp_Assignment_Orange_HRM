@@ -1,46 +1,28 @@
 {
-    "employeeData": [{
-      "firstName": "John",
-      "MiddleName": "Alex",
-      "lastName": "Doe",
+  "employeeData": [
+    {
+      "firstName": "Testts1",
+      "MiddleName": "ASASA",
+      "lastName": "SDFC1",
       "employeeId": "12345"
-      
     },
     {
-        "firstName": "John1",
-        "MiddleName": "Alex1",
-        "lastName": "Doe1",
-        "employeeId": "123456"
-       
-        
-      },
-      {
-        "firstName": "John2",
-        "MiddleName": "Alex2",
-        "lastName": "Doe2",
-        "employeeId": "123457"
-        
-        
-      },
-      {
-        "firstName": "John3",
-        "MiddleName": "Alex3",
-        "lastName": "Doe3",
-        "employeeId": "1234578"
-        
-        
-      },
-      {
-        "firstName": "John4",
-        "MiddleName": "Alex4",
-        "lastName": "Doe4",
-        "employeeId": "1234579"
-        
-        
-      }
-    
-    ]
-       
-
-  }
-  
+      "firstName": "Axis1",
+      "MiddleName": "Kum",
+      "lastName": "ASXD1",
+      "employeeId": "12345"
+    },
+    {
+      "firstName": "HDFC2",
+      "MiddleName": "Kum",
+      "lastName": "DSRRS",
+      "employeeId": "12345"
+    },
+    {
+      "firstName": "HDFC3",
+      "MiddleName": "Kum",
+      "lastName": "DSRRS",
+      "employeeId": "12345"
+    }
+  ]
+}
