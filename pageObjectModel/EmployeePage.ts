@@ -23,6 +23,7 @@ export class EmployeePage {
     async verifyEmployeeDetails(expectedFirstName: string, expectedLastName: string) {
         const firstNameElement = await this.page.locator(`//div[@role='cell']//div[contains(.,'${expectedFirstName}')]`)
         expect(firstNameElement).toBeVisible({ visible: true })
+        
 
 
     }
