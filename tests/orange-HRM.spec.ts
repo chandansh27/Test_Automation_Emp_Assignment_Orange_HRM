@@ -1,34 +1,57 @@
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "../pageObjectModel/LoginPage";
 import { EmployeePage } from "../pageObjectModel/EmployeePage";
-import { HomePage } from "../pageObjectModel/HomePage";
-import employeeData from "../data/employee-data.json";
-import { Navigaationpage } from "../pageObjectModel/Navigaationpage";
+//import employeeData from "../data/employee-data.json"; // we can also use Json/xls data to add employee data but used better approach like faker
+import { NavigationPage } from "../pageObjectModel/NavigationPage";
+import { faker } from '@faker-js/faker'; //Faker tries to generate realistic data
 
-import { TIMEOUT } from "dns";
+test.beforeEach(async ({ page }) => { 
+    // before each test run go to login page
+    await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+    
+});
 
-test.beforeEach(async ({ page }) => {
-    await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    //await page.waitForTimeout(5000)
+test.afterEach(async ({ page }) => {
+    // after test run finish log out from the application
+    await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/logout');
+    
+});
 
-})
-// This is the script for the actual worflow
-test('EmployeeWorkflow', async ({ page }) => {
+// Adding Employees Data and verifying details
+test('employeeWorkflow', async ({ page }, testInfo) => {
     const loginPage = new LoginPage(page);
     const employeePage = new EmployeePage(page);
-    const homePage = new HomePage(page);
-    const navigaationpage = new Navigaationpage(page)
+    const navigationPage = new NavigationPage(page);
 
-    await loginPage.login("Admin", "admin123")
+    await loginPage.login("Admin", "admin123");
 
-    for (const data of employeeData.employeeData) { // This interation will read the Jason data and add employees
+    for (let employeeCounter = 0; employeeCounter < 5; employeeCounter++) { // Loop 5 times to add employees
+        const firstName = faker.person.firstName(); // Generate a random first name
+        const lastName = faker.person.lastName(); // Generate a random last name
 
-        await navigaationpage.navigateToPIMPageAndAddEmployee()
-        await employeePage.addEmployee(data.firstName, data.lastName)
-        await navigaationpage.navigateToEmployeeList()
-        await employeePage.searchEmployee(data.firstName)
-        await employeePage.verifyEmployeeDetails(data.firstName, data.lastName)
+        await navigationPage.navigateToPIMPageAndAddEmployee();
+        await employeePage.addEmployee(firstName, lastName);
 
+        await navigationPage.navigateToEmployeeList();
+        await employeePage.searchEmployee(firstName);
+        await page.waitForTimeout(3000);
+
+
+        try {
+            const employeeDetails = await employeePage.getSearchedEmployeeDetails();
+            expect(employeeDetails.firstName).toBe(firstName);
+            expect(employeeDetails.lastName).toBe(lastName);
+
+            const screenshot = await page.screenshot();
+            // attach image to current test when passed
+            await testInfo.attach(`pass_ExecutionScreenShot_${employeeCounter}`, { body: screenshot, contentType: 'image/png' });
+
+        } catch (error) {
+            console.error('Assertion failed:', error);
+
+            const screenshot = await page.screenshot();
+            //attach image to current test if fail
+           await testInfo.attach(`failed_ExecutionErrorScreenShot_${employeeCounter}`, { body: screenshot, contentType: 'image/png' });
+        }
     }
-    
-})
+});
