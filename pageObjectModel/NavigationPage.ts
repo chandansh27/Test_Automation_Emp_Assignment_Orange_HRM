@@ -12,7 +12,7 @@ export class NavigationPage {
 
     await this.page.click("//span[contains(@class,'oxd-main-menu-item--name') and (.='PIM')]", { timeout: 5000, });
     await this.page.click("//a[text()='Add Employee']", { timeout: 5000 });
-    await this.page.reload(); // using this becuse of flakiness in the website
+    await this.page.reload(); // using this because of flakiness in the website
    
   }
 
