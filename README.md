@@ -23,11 +23,11 @@ npx playwright install
 
 
    ###### POM (Page Object Model)
-   Used POM as a design pattern to written the class under pageObjectModel folder for better usage of code/script
+   Used POM as a design pattern to written the classes under pageObjectModel folder for better usage of code/script
    called the methods in main spec file which is : orange-HRM.spec
-   Have used Faker.js to generate realistic data , we can use Json and Xls also as data driven apparch , but have used faker for relalistc data apprach:  https://www.npmjs.com/package/@faker-js/faker
+   have used Faker.js to generate realistic data , we can use Json and Xls also as data driven approach , but have used faker for relalistc data apprach:  https://www.npmjs.com/package/@faker-js/faker
 
    ############### Execution Test cases from Jenkins
 
-   Have installed Jenkins and NPM pacakeg on EC2 and configuration have done on Jenkins server , but facing some error related to configuartion
+   have installed Jenkins and NPM pacakeg on EC2, configuration have done on Jenkins server , but facing some error related to NPM package , will figure that out soon
    
