@@ -27,7 +27,7 @@ npx playwright install
    called the methods in main spec file which is : orange-HRM.spec
    have used Faker.js to generate realistic data , we can use Json and Xls also as data driven approach , but have used faker for relalistc data apprach:  https://www.npmjs.com/package/@faker-js/faker
 
-   ############### Execution Test cases from Jenkins
+   ###### Execution Test cases from Jenkins
 
    have installed Jenkins and NPM pacakeg on EC2, configuration have done on Jenkins server , but facing some error related to NPM package , will figure that out soon
    
