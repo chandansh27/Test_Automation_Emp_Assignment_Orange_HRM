@@ -30,4 +30,4 @@ npx playwright install
 
    have installed Jenkins and NPM pacakeg on EC2, configuration have done on Jenkins server , but facing some error related to NPM package , will figure that out soon
    
->>>>>>> 64a99321181e64575b56282c88dce1c3c0416cf1
+
