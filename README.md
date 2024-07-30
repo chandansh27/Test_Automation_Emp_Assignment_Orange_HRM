@@ -28,6 +28,6 @@ npx playwright install
 
    ###### Execution Test cases from Jenkins
 
-   have installed Jenkins and NPM pacakeg on EC2, configuration have done on Jenkins server , but facing some error related to NPM package , will figure that out soon
+    installed Jenkins and NPM pacakeg on EC2, configuration  on Jenkins server , and run the job
    
 
